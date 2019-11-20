@@ -4,7 +4,9 @@ let apiController = require('./controllers/apiControllers');
 // Agregar un controller por cada Modelo
 // let modelController = require('./controllers/modelController');
 
-    
+
+// Endepoints de Ejemplo
+
 
 // Set default API response
 router.get('/', function (req, res) 
