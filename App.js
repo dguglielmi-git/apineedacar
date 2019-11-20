@@ -8,7 +8,7 @@ var app = express();
 
 //conectar BD
 //var urlBD = 'mongodb://localhost/test';
-var urlBD = "mongodb+srv://needacar:apiProject@cluster0-mliyx.mongodb.net/test?retryWrites=true&w=majority";
+var urlBD = 'mongodb+srv://needacar:apiProject@cluster0-mliyx.mongodb.net/test?retryWrites=true&w=majority';
 
 //opciones conexion
 var opts = {useNewUrlParser : true, connectTimeoutMS:20000};
