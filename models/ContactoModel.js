@@ -10,6 +10,6 @@ var contactoSchema = new Schema({
     mail: String
 });
 
-var Contactos = mongoose.model('Contacto', contactoSchema);
+var Contactos = mongoose.model('api.Contacto', contactoSchema);
 console.log("se creo modelo");
 module.exports = Contactos;

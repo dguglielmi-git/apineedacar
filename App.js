@@ -8,7 +8,8 @@ var app = express();
 
 //conectar BD
 //var urlBD = 'mongodb://localhost/test';
-var urlBD = 'mongodb+srv://needacar:apiProject@cluster0-mliyx.mongodb.net/test?retryWrites=true&w=majority';
+//var urlBD = "mongodb+srv://test:test1234@cluster0-apezn.mongodb.net/Agenda?retryWrites=true";
+var urlBD = 'mongodb+srv://needacar:apiProject@cluster0-mliyx.mongodb.net/api?retryWrites=true&w=majority';
 
 //opciones conexion
 var opts = {useNewUrlParser : true, connectTimeoutMS:20000};
@@ -27,7 +28,6 @@ mongoose.connect(urlBD,opts).then
 
 // Import router
 var apiRoutes = require("./api-routes")
-
 
 // Todo lo que recibe la app se tratara como json
 app.use(bodyParser.urlencoded(

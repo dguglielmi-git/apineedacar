@@ -1,10 +1,23 @@
 // Initialize express router
 let router = require('express').Router();
 let apiController = require('./controllers/apiControllers');
+let autoController = require('./controllers/autoController');
+
 // Agregar un controller por cada Modelo
 // let modelController = require('./controllers/modelController');
 
+//EndPoint para leer toda la base
+router.get('/leerAutos',function(req,res)
+{
+    console.log("leer Autos");
+    autoController.getAutos(req,res);
+});
 
+router.post('/insertAuto/Auto',function(req,res)
+{
+    console.log(req.body);
+    autoController.insertAuto(req,res);
+});
 // Endepoints de Ejemplo
 
 
@@ -24,6 +37,7 @@ router.get('/leerAgenda',function(req,res)
     console.log("leer");
     apiController.getContactos(req,res);
 });
+
 //EndPoint para leer con filtro
 router.post('/leerAgenda/?idBusqueda',function(req,res)
 {

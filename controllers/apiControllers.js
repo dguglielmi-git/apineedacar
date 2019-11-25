@@ -138,7 +138,6 @@ let getContactosById = (req, res) =>
             console.log(err);
         }
     })
-      
 };
 
 let insertContacto = (req,res) =>
@@ -151,11 +150,8 @@ let insertContacto = (req,res) =>
         dni: req.body.dni,
         mail: req.body.mail
     });
-    newContacto.save().
-    then
-    (
-        (newContacto)=>
-        {
+    newContacto.save().then(
+        (newContacto)=>{
             res.status(200).send(newContacto); //devuelvo resultado query       
         },
         (err)=>
@@ -165,6 +161,7 @@ let insertContacto = (req,res) =>
         }
     ) 
 }
+
 let updateContacto = (req,res) => 
 {
     let id = { dni : req.body.dniBuscado};
