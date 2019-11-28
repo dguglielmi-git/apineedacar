@@ -13,6 +13,18 @@ let getAutos = (req, res) => {
         }
     });
 }
+
+let getMarcas = (req, res) => {
+    console.log("ejecucion de getMarcas");
+    Autos.find().distinct("marca", function (err, listaAuto) {
+        res.status(200).send(listaAuto);
+        // si hay error
+        (err) => {
+            res.status(500).send(err);
+            console.log(err);
+        }
+    });
+}
 /*
 let insertAuto = (req, res) => {
     console.log(req.body);
@@ -46,23 +58,43 @@ let insertAuto = (req, res) => {
 }
 */
 
-let getDatoByBarrio = (req, res) => {
+let getAutoByBarrio = (req, res) => {
     console.log("Ejecucion de getDatoByBarrio");
     //Obtener id busqueda
-    let idBusqueda = { ubicacion: req.body.ubicacion };
+    let p1 = { $regex: req.body.ubicacion, $options: 'i' };    
+    
+    let idBusqueda = { ubicacion: { $regex: req.body.ubicacion, $options: 'i' } };
     console.log(idBusqueda);
     //Listar resultados
-    Autos.find(idBusqueda, function (err, todo) {
-        (listaAuto) => {
-            res.status(200).send(listaAuto); //devuelvo resultado query    
-        },
-            (err) => {
-                res.status(500).send(err);
-                console.log(err);
-            }
-    })
+    Autos.find({"ubicacion": {
+        '$regex': new RegExp(req.body.ubicacion, "i")
+    }}, function (err, listaAuto) {
+        res.status(200).send(listaAuto);
+        // si hay error
+        (err) => {
+            res.status(500).send(err);
+            console.log(err);
+        }
+    });
 };
 
+let getModelos = (req, res) => {
+    console.log("Ejecucion de getModelos");
+    //Obtener id busqueda
+    
+    console.log(req.body.marca);
+    //Listar resultados
+    Autos.find({"marca": {
+        '$regex': new RegExp(req.body.marca, "i")
+    }}, function (err, listaAuto) {
+        res.status(200).send(listaAuto);
+        // si hay error
+        (err) => {
+            res.status(500).send(err);
+            console.log(err);
+        }
+    });
+};
 
 let insertAuto = (req, res) => {
     console.log(req.body);
@@ -114,19 +146,16 @@ let updateAuto = (req, res) => {
         });
 }
 
-let deleteAuto = (req,res)=>
-{
-    let id = { _id : req.body._id};
-    Autos.deleteOne(id, function(err)
-    {
-        res.status(200).send({estado:"Registro eliminado"}); //devuelvo resultado  
-        (err)=>
-        { 
+let deleteAuto = (req, res) => {
+    let id = { _id: req.body._id };
+    Autos.deleteOne(id, function (err) {
+        res.status(200).send({ estado: "Registro eliminado" }); //devuelvo resultado  
+        (err) => {
             res.status(500).send(err);
             console.log(err);
-        }      
+        }
     });
 }
 
-module.exports = { getAutos, getDatoByBarrio, insertAuto, updateAuto, deleteAuto };
+module.exports = { getAutos, getAutoByBarrio, insertAuto, updateAuto, deleteAuto, getMarcas,getModelos };
 

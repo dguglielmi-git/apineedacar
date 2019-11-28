@@ -13,14 +13,30 @@ router.get('/leerAutos',function(req,res)
     autoController.getAutos(req,res);
 });
 
+router.get('/leerMarcas',function(req,res)
+{
+    console.log("leer Marcas");
+    autoController.getMarcas(req,res);
+});
+
 router.post('/insertAuto/Auto',function(req,res)
 {
     console.log(req.body);
     autoController.insertAuto(req,res);
 });
 // Endepoints de Ejemplo
+//EndPoint para leer con filtro
+router.post('/leerBarrio/?idBusqueda',function(req,res)
+{
+    console.log("leer con filtro");
+    autoController.getAutoByBarrio(req,res);
+});
 
-
+router.post('/getModelo/?idBusqueda',function(req,res)
+{
+    console.log("leer modelo");
+    autoController.getModelos(req,res);
+});
 // Set default API response
 router.get('/', function (req, res) 
 {
