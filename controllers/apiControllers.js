@@ -99,7 +99,7 @@ let deleteModel = (req,res)=>
 
 
 //--------------------------------------------------------------------------------------
-// De aca para abajo es todo el codigo tomado de ejemplo del proyecto de la profesora.
+// De aca para abajo es todo el codigo tomado de ejemplo del proyecto.
 let getContactos = (req, res) =>
 {      
     console.log("llegue a leer");
